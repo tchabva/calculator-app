@@ -90,7 +90,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void multiplyNumbers() {
-        
+        try {
+            int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
+            int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
+            Log.i("Mulitply", String.valueOf(numberOne * numberTwo));
+            resultTextView.setText(String.valueOf(numberOne * numberTwo));
+        }catch (NumberFormatException e){
+            Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void subtractNumbers() {
@@ -101,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
             int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
-            Log.i("Sum", String.valueOf(numberOne + numberTwo));
+            Log.i("Add", String.valueOf(numberOne + numberTwo));
             resultTextView.setText(String.valueOf(numberOne + numberTwo));
         }catch (NumberFormatException e){
             Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
