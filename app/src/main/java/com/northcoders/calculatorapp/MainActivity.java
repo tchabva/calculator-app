@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 operatorButton.setText(selectOperationSpinner.getSelectedItem().toString());
+                clearNumbers();
             }
 
             @Override
@@ -79,6 +80,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void divideNumbers() {
+        try {
+            int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
+            int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
+            Log.i("Divide", String.valueOf(numberOne / numberTwo));
+            resultTextView.setText(String.valueOf(numberOne / numberTwo));
+        }catch (NumberFormatException e){
+            Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
+        }catch (ArithmeticException e){
+            Toast.makeText(this.context, "Cannot divide by 0!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void multiplyNumbers() {
