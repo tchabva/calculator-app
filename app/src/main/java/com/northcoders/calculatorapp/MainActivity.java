@@ -1,10 +1,13 @@
 package com.northcoders.calculatorapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     TextView resultTextView;
     Button operatorButton;
     Button clearButton;
+    Spinner selectOperationSpinner;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +38,43 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        context = getApplicationContext();
         numberOneEditText = findViewById(R.id.editTextNumber1);
         numberTwoEditText = findViewById(R.id.editTextNumber2);
         resultTextView = findViewById(R.id.textViewResult);
         operatorButton = findViewById(R.id.operatorButton);
         clearButton = findViewById(R.id.clearButton);
+        selectOperationSpinner = findViewById(R.id.operationSpinner);
 
         operatorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNumbers();
+                switch (operatorButton.getText().toString()){
+                    case "Add":
+                        addNumbers();
+                        break;
+                    case "Subtract":
+                        subtractNumbers();
+                        break;
+                    case "Multiply":
+                        multiplyNumbers();
+                        break;
+                    case "Divide":
+                        divideNumbers();
+                        break;
+                }
+            }
+        });
+
+        selectOperationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                operatorButton.setText(selectOperationSpinner.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // Do nothing
             }
         });
 
@@ -54,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void divideNumbers() {
+    }
+
+    private void multiplyNumbers() {
+        
+    }
+
+    private void subtractNumbers() {
+        
+    }
+
     private void addNumbers(){
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
@@ -61,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Sum", String.valueOf(numberOne + numberTwo));
             resultTextView.setText(String.valueOf(numberOne + numberTwo));
         }catch (NumberFormatException e){
-            Toast.makeText(this.getApplicationContext(), "Please enter numbers", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
         }
 
     }
