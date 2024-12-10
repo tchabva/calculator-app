@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText numberOneEditText;
     EditText numberTwoEditText;
-    TextView result;
+    TextView resultTextView;
     Button addNumbersButton;
 
     @Override
@@ -33,17 +33,22 @@ public class MainActivity extends AppCompatActivity {
 
         numberOneEditText = findViewById(R.id.editTextNumber1);
         numberTwoEditText = findViewById(R.id.editTextNumber2);
-        result = findViewById(R.id.textViewResult);
+        resultTextView = findViewById(R.id.textViewResult);
         addNumbersButton = findViewById(R.id.button);
 
         addNumbersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
-                int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
-                Log.i("Sum", String.valueOf(numberOne + numberTwo));
-                result.setText(String.valueOf(numberOne + numberTwo));
+                addNumbers();
             }
         });
     }
+
+    private void addNumbers(){
+        int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
+        int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
+        Log.i("Sum", String.valueOf(numberOne + numberTwo));
+        resultTextView.setText(String.valueOf(numberOne + numberTwo));
+    }
+
 }
