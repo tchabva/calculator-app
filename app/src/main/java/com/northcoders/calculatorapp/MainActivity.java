@@ -87,10 +87,11 @@ public class MainActivity extends AppCompatActivity {
     // divide numbers method
     private void divideNumbers() {
         try {
-            int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
-            int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
-            Log.i("Divide", String.valueOf(numberOne / numberTwo));
-            resultTextView.setText(String.valueOf(numberOne / numberTwo));
+            double numberOne = Double.parseDouble(numberOneEditText.getText().toString());
+            double numberTwo = Double.parseDouble(numberTwoEditText.getText().toString());
+            double quotient = numberOne/numberTwo;
+            Log.i("Divide", String.valueOf(quotient));
+            resultTextView.setText(String.format("%.4f", quotient));
         }catch (NumberFormatException e){
             Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
         }catch (ArithmeticException e){
