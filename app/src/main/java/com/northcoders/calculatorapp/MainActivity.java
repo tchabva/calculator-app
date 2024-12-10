@@ -46,23 +46,20 @@ public class MainActivity extends AppCompatActivity {
         clearButton = findViewById(R.id.clearButton);
         selectOperationSpinner = findViewById(R.id.operationSpinner);
 
-        operatorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (operatorButton.getText().toString()){
-                    case "Add":
-                        addNumbers();
-                        break;
-                    case "Subtract":
-                        subtractNumbers();
-                        break;
-                    case "Multiply":
-                        multiplyNumbers();
-                        break;
-                    case "Divide":
-                        divideNumbers();
-                        break;
-                }
+        operatorButton.setOnClickListener(view -> {
+            switch (operatorButton.getText().toString()){
+                case "Add":
+                    addNumbers();
+                    break;
+                case "Subtract":
+                    subtractNumbers();
+                    break;
+                case "Multiply":
+                    multiplyNumbers();
+                    break;
+                case "Divide":
+                    divideNumbers();
+                    break;
             }
         });
 
@@ -78,12 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearNumbers();
-            }
-        });
+        clearButton.setOnClickListener(view -> clearNumbers());
     }
 
     private void divideNumbers() {
@@ -93,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
             int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
-            Log.i("Mulitply", String.valueOf(numberOne * numberTwo));
+            Log.i("Multiply", String.valueOf(numberOne * numberTwo));
             resultTextView.setText(String.valueOf(numberOne * numberTwo));
         }catch (NumberFormatException e){
             Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
@@ -101,7 +93,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void subtractNumbers() {
-        
+        try {
+            int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
+            int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
+            Log.i("Subtract", String.valueOf(numberOne - numberTwo));
+            resultTextView.setText(String.valueOf(numberOne - numberTwo));
+        }catch (NumberFormatException e){
+            Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void addNumbers(){
@@ -113,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         }catch (NumberFormatException e){
             Toast.makeText(this.context, "Please enter numbers", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void clearNumbers(){
@@ -121,5 +119,4 @@ public class MainActivity extends AppCompatActivity {
         numberOneEditText.setText(null);
         numberTwoEditText.setText(null);
     }
-
 }
