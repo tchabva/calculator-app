@@ -8,4 +8,12 @@
     <string name="enter_first_number">Enter First Number</string>
     <string name="enter_second_number">Enter Second Number</string>
     <string name="clear">Clear</string>
+    <string name="operation_spinner_prompt">Select an Operation</string>
+
+    <string-array name="operations">
+        <item>@string/add_numbers</item>
+        <item>@string/subtract_numbers</item>
+        <item>@string/multiply_numbers</item>
+        <item>@string/divide_numbers</item>
+    </string-array>
 </resources>

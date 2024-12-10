@@ -55,11 +55,11 @@
         android:id="@+id/operatorButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/add_numbers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+        app:layout_constraintTop_toBottomOf="@+id/operationSpinner" />
 
     <Button
         android:id="@+id/clearButton"
@@ -70,5 +70,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/operatorButton" />
+
+    <Spinner
+        android:id="@+id/operationSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:prompt="@string/operation_spinner_prompt"
+        android:entries="@array/operations"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
