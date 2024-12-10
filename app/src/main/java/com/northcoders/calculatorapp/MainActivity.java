@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resultTextView.setText("0");
-                numberOneEditText.setText(null);
-                numberTwoEditText.setText(null);
+                clearNumbers();
             }
         });
     }
@@ -66,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this.getApplicationContext(), "Please enter numbers", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void clearNumbers(){
+        resultTextView.setText("0");
+        numberOneEditText.setText(null);
+        numberTwoEditText.setText(null);
     }
 
 }
