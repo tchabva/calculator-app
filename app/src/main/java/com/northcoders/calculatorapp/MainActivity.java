@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,10 +46,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addNumbers(){
-        int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
-        int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
-        Log.i("Sum", String.valueOf(numberOne + numberTwo));
-        resultTextView.setText(String.valueOf(numberOne + numberTwo));
+        try {
+            int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
+            int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
+            Log.i("Sum", String.valueOf(numberOne + numberTwo));
+            resultTextView.setText(String.valueOf(numberOne + numberTwo));
+        }catch (NumberFormatException e){
+            Toast.makeText(this.getApplicationContext(), "Please enter numbers", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }
