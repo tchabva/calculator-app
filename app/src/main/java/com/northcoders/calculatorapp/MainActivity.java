@@ -19,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variables
     EditText numberOneEditText;
     EditText numberTwoEditText;
     TextView resultTextView;
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        context = getApplicationContext();
+        // connecting vars to the activity_main.xml layout items
+        context = getApplicationContext(); // gets the application context
         numberOneEditText = findViewById(R.id.editTextNumber1);
         numberTwoEditText = findViewById(R.id.editTextNumber2);
         resultTextView = findViewById(R.id.textViewResult);
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         clearButton = findViewById(R.id.clearButton);
         selectOperationSpinner = findViewById(R.id.operationSpinner);
 
+        // The button calls a different method depend on its text
         operatorButton.setOnClickListener(view -> {
             switch (operatorButton.getText().toString()){
                 case "Add":
@@ -63,11 +66,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Selects which operation is currently assigned to the operationButton
         selectOperationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 operatorButton.setText(selectOperationSpinner.getSelectedItem().toString());
-                clearNumbers();
+                clearNumbers(); // clears the numbers and screen when changing operations
             }
 
             @Override
@@ -76,9 +80,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Will clear the numbers and result when clicked
         clearButton.setOnClickListener(view -> clearNumbers());
     }
 
+    // divide numbers method
     private void divideNumbers() {
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
@@ -92,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Multitply numbers method
     private void multiplyNumbers() {
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
@@ -103,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Subtract numbers method.
     private void subtractNumbers() {
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
@@ -114,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Add numbers method
     private void addNumbers(){
         try {
             int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
@@ -125,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // clears the numbers and the result textView
     private void clearNumbers(){
         resultTextView.setText("0");
         numberOneEditText.setText(null);
