@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int numberOne = Integer.parseInt(numberOneEditText.getText().toString());
                 int numberTwo = Integer.parseInt(numberTwoEditText.getText().toString());
-                Log.i("Sum", String.valueOf(numberTwo + numberTwo));
-                result.setText(String.valueOf(numberTwo + numberTwo));
+                Log.i("Sum", String.valueOf(numberOne + numberTwo));
+                result.setText(String.valueOf(numberOne + numberTwo));
             }
         });
     }
