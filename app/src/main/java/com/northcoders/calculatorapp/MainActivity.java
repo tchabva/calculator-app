@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     EditText numberOneEditText;
     EditText numberTwoEditText;
     TextView resultTextView;
-    Button addNumbersButton;
+    Button operatorButton;
+    Button clearButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +36,20 @@ public class MainActivity extends AppCompatActivity {
         numberOneEditText = findViewById(R.id.editTextNumber1);
         numberTwoEditText = findViewById(R.id.editTextNumber2);
         resultTextView = findViewById(R.id.textViewResult);
-        addNumbersButton = findViewById(R.id.button);
+        operatorButton = findViewById(R.id.operatorButton);
+        clearButton = findViewById(R.id.clearButton);
 
-        addNumbersButton.setOnClickListener(new View.OnClickListener() {
+        operatorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addNumbers();
+            }
+        });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearNumbers();
             }
         });
     }
@@ -55,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this.getApplicationContext(), "Please enter numbers", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void clearNumbers(){
+        resultTextView.setText("0");
+        numberOneEditText.setText(null);
+        numberTwoEditText.setText(null);
     }
 
 }
